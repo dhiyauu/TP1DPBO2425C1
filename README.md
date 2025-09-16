@@ -13,7 +13,7 @@ Di dalamnya terdapat beberapa atribut, diantaranya:
 1. **ID** : Identitas unik tiap produk agar membedakan produk jika nama produk sama.
 2. **Nama** : Identitas deskriptif saat menampilkan daftar produk.
 3. **Merek** : Penting karena banyak produk memiliki fungsi sama tetapi merek/brand berbeda.
-4. **Model** : Berguna untuk memudahkan identifikasi lebih spesifik selain nama  dn merek.
+4. **Model** : Berguna untuk memudahkan identifikasi lebih spesifik selain nama  dan merek.
 5. **Harga** : Harga dipakai saat menampilkan produk, transaksi, atau perhitungan.
 6. **Stok** : Untuk mengetahui ketersediaan barang.
 7. **Gambar** : Untuk memberikan visualisasi produk kepada pelanggan.
@@ -40,7 +40,7 @@ Terdapat getter dan setter untuk akses/mengubah data produk, diantaranya:
 
 `setMerek(string merek)` : Mengubah merek produk
 
-`setModel(string model)` : Mengubah modul produk
+`setModel(string model)` : Mengubah model produk
 
 `setHarga(double harga)` : Mengubah harga produk
 
