@@ -23,8 +23,7 @@ if (isset($_GET['edit'])) {
     foreach ($_SESSION['produk'] as $p) {
         // Jika ID produk sama dengan parameter edit, ambil produk tersebut untuk diedit
         if ($p['id'] == $_GET['edit']) {
-            $produkEdit = $p; // simpan produk ke variabel $produkEdit
-            break; // berhenti setelah ketemu
+            $produkEdit = $p; // simpan produk ke variabel produkEdit
         }
     }
 }
@@ -35,30 +34,29 @@ if (isset($_POST['update'])) {
 
     // Looping produk dengan reference (&) agar bisa langsung dimodifikasi
     foreach ($_SESSION['produk'] as &$p) {
-        if ($p['id'] == $id) {
-            // Update semua field sesuai input form
-            $p['nama']  = $_POST['nama'];
-            $p['merek'] = $_POST['merek'];
-            $p['model'] = $_POST['model'];
-            $p['harga'] = $_POST['harga'];
-            $p['stok']  = $_POST['stok'];
+    if ($p['id'] == $id) {
+        // Update semua field sesuai input form
+        $p['nama']  = $_POST['nama'];
+        $p['merek'] = $_POST['merek'];
+        $p['model'] = $_POST['model'];
+        $p['harga'] = $_POST['harga'];
+        $p['stok']  = $_POST['stok'];
 
-            // Jika user upload gambar baru, ganti gambar lama
-            if (!empty($_FILES['gambar']['name'])) {
-                $targetDir = "uploads/"; // folder tujuan upload
-                // Jika folder belum ada, buat dulu
-                if (!is_dir($targetDir)) mkdir($targetDir);
-                // Simpan file dengan nama asli ke folder uploads/
-                $targetFile = $targetDir . basename($_FILES['gambar']['name']);
-                // Pindahkan file sementara ke folder tujuan
-                move_uploaded_file($_FILES['gambar']['tmp_name'], $targetFile);
-                // Simpan path file ke data produk
-                $p['gambar'] = $targetFile;
-            }
-            break; // keluar dari loop setelah produk ketemu
+        // Jika user upload gambar baru, ganti gambar lama
+        if (!empty($_FILES['gambar']['name'])) {
+            $targetDir = "uploads/"; // folder tujuan upload
+            // Jika folder belum ada, buat dulu
+            if (!is_dir($targetDir)) mkdir($targetDir);
+            // Simpan file dengan nama asli ke folder uploads/
+            $targetFile = $targetDir . basename($_FILES['gambar']['name']);
+            // Pindahkan file sementara ke folder tujuan
+            move_uploaded_file($_FILES['gambar']['tmp_name'], $targetFile);
+            // Simpan path file ke data produk
+            $p['gambar'] = $targetFile;
         }
     }
-    unset($p); // hapus reference agar aman
+}
+unset($p); // hapus reference agar aman
 
     // Redirect kembali ke main.php
     header("Location: main.php");
