@@ -27,11 +27,10 @@ if (isset($_GET['hapus'])) {
         if ($p['id'] == $id) {
             // Hapus produk dari array session
             unset($_SESSION['produk'][$i]);
-            // Re-index array agar tidak ada index yang lompat
-            $_SESSION['produk'] = array_values($_SESSION['produk']);
-            break; // keluar dari loop setelah ditemukan
         }
     }
+    // Re-index array agar tidak ada index yang lompat
+    $_SESSION['produk'] = array_values($_SESSION['produk']);
 }
 
 // CARI PRODUK
@@ -45,7 +44,6 @@ if (isset($_POST['cari'])) {
         // Jika ditemukan produk dengan ID sesuai pencarian
         if ($p['id'] == $idCari) {
             $searchResult = $p; // Simpan hasil pencarian
-            break; // hentikan loop
         }
     }
 }
